@@ -5,7 +5,7 @@
 
 .perdeu {
   display: inline-block;
-  color: #666;
+  color: #837492;
   padding: 0.5rem 0;
   line-height: 1;
 }
@@ -36,7 +36,7 @@
 .subtitle::after {
   content: '';
   display: block;
-  background: #7f00b2;
+  background: #837492;
   height: 0.5rem;
   width: 3rem;
   border-radius: 0.2rem;
