@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
-// import Dogs from '../../Assets/dogs.svg';
 import c from '../../Assets/G.png';
 import { UserContext } from '../../UserContext';
 
@@ -11,14 +10,13 @@ function Header() {
   return (
     <header className={styles.header}>
       <nav className={`${styles.nav} container`}>
-        <Link to="/" className="logo">
-          {/* <img src={Dogs} alt="Your SVG" aria-label="Dogs - cabecalho" /> */}
+        <Link className={styles.logo} to="/" aria-label="Home">
           <img
             src={c}
             alt="Your SVG"
             width={50}
             height={50}
-            aria-label="Dogs - cabecalho"
+            aria-label="cabecalho"
           />
         </Link>
         {data ? (
@@ -27,7 +25,7 @@ function Header() {
           </Link>
         ) : (
           <Link className={styles.login} to="/login">
-            Login/Criar
+            Login / Criar
           </Link>
         )}
       </nav>
