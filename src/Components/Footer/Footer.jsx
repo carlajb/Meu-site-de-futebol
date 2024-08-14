@@ -1,14 +1,14 @@
-import React from 'react';
+// import React from 'react';
 
-import Dogs from '../Assets/dogs-footer.svg?react';
+// import Dogs from '../Assets/dogs-footer.svg?react';
 
-const Footer = () => {
-  return (
-    <footer>
-      <Dogs />
-      <p>Elas fazem G⚽L até de SALT⚽ &copy;2023 </p>
-    </footer>
-  );
-};
+// const Footer = () => {
+//   return (
+//     <footer>
+//       <Dogs />
+//       <p>Elas marcam G⚽L até com SALT⚽ &copy;2024 </p>
+//     </footer>
+//   );
+// };
 
-export default Footer;
+// export default Footer;
