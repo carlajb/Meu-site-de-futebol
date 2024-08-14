@@ -1,0 +1,25 @@
+{
+  "short_name": "GolDeSalto",
+  "name": "GolDeSalto - Rede Social para futebol feminino",
+  "icons": [
+    {
+      "src": "../src/Assets/iconsbola.svg",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "high_heel.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "high_heel.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#9400D3",
+  "background_color": "#ffffff"
+}

@@ -1,0 +1,19 @@
+.footer {
+  width: 100%;
+ 
+  background-color: #74992e ;
+  padding: 3rem 1rem 0 1rem;
+  /* color: #fefefe; */
+  font-weight: bold;
+  font-size: 1.125rem;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  height: 10rem;
+  text-align: center;
+  color: #764701;
+}
+
+.footer p {
+  margin-top: 1rem;
+}

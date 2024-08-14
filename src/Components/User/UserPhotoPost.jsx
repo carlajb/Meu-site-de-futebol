@@ -5,8 +5,9 @@ import useFetch from '../../Hooks/useFetch';
 import Input from '../Forms/Input';
 import Button from '../Forms/Button';
 import Error from '../Helper/Error';
-import { PHOTO_POST } from '../../Api';
+import { PHOTO_POST } from '../../api';
 import { useNavigate } from 'react-router-dom';
+import Head from '../Helper/Head';
 
 const UserPhotoPost = () => {
   const nome_time = useForm();
@@ -41,6 +42,7 @@ const UserPhotoPost = () => {
 
     const token = window.localStorage.getItem('token');
     const { url, options } = PHOTO_POST(formData, token);
+    console.log('TOKEN', { token });
     console.log('URL:', url);
     console.log('Options:', options);
     request(url, options);
@@ -55,6 +57,7 @@ const UserPhotoPost = () => {
 
   return (
     <section className={`${styles.photoPost} animeLeft`}>
+      <Head title="Poste sua foto" />
       <form onSubmit={handleSubmit}>
         <Input label="Nome" type="text" name="nome" {...nome_time} />
         <Input label="Bairro" type="text" name="bairro" {...bairro} />
