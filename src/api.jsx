@@ -1,4 +1,9 @@
-export const API_URL = 'http://localhost:10010/json';
+const DEV_API_URL = 'http://localhost:10010/json';
+const PROD_API_URL = 'https://apigoldesalto.netlify.app/.netlify/functions';
+// substitua pelo domínio de produção
+
+export const API_URL =
+  process.env.NODE_ENV === 'production' ? PROD_API_URL : DEV_API_URL;
 
 export function TOKEN_POST(body) {
   return {
