@@ -1,5 +1,6 @@
 const DEV_API_URL = 'http://localhost:10010/json';
-const PROD_API_URL = 'https://apigoldesalto.netlify.app/.netlify/functions';
+const PROD_API_URL = 'https://apigoldesalto.netlify.app/json';
+
 // substitua pelo domínio de produção
 
 export const API_URL =
