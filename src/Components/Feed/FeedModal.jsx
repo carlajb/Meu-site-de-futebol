@@ -11,7 +11,12 @@ const FeedModal = ({ photo, setModalPhoto }) => {
 
   React.useEffect(() => {
     const { url, options } = PHOTO_GET(photo.id);
-    request(url, options);
+    request(url, options).then((data) => {
+      // Supondo que a resposta inclua um objeto de foto que contém a URL
+      if (data && data.photo && data.photo.src.startsWith('http://')) {
+        data.photo.src = data.photo.src.replace('http://', 'https://');
+      }
+    });
   }, [photo, request]);
 
   function handleOutsideClick(event) {

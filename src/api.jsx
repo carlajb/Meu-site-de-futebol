@@ -1,6 +1,8 @@
 // Utilizando a variável de ambiente para definir o API_URL
 export const API_URL =
-  process.env.REACT_APP_API_URL || 'http://localhost:10010/json';
+  import.meta.env.VITE_API_URL || 'http://localhost:10010/json';
+
+console.log('API_URL:', API_URL);
 
 export function TOKEN_POST(body) {
   return {

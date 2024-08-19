@@ -13,7 +13,12 @@ const Photo = () => {
 
   React.useEffect(() => {
     const { url, options } = PHOTO_GET(id);
-    request(url, options);
+    request(url, options).then((data) => {
+      // Reescrever URLs para HTTPS, se necessário
+      if (data && data.photo && data.photo.src.startsWith('http://')) {
+        data.photo.src = data.photo.src.replace('http://', 'https://');
+      }
+    });
   }, [request, id]);
 
   if (error) return <Error error={error} />;
