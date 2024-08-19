@@ -1,12 +1,10 @@
-const DEV_API_URL = 'http://localhost:10010/json'; // URL do back-end local
-const PROD_API_URL = 'https://apigoldesalto.netlify.app/.netlify/functions'; // URL para produção no Netlify
-
+// Utilizando a variável de ambiente para definir o API_URL
 export const API_URL =
-  process.env.NODE_ENV === 'production' ? PROD_API_URL : DEV_API_URL;
+  process.env.REACT_APP_API_URL || 'http://localhost:10010/json';
 
 export function TOKEN_POST(body) {
   return {
-    url: `${API_URL}/jwt-auth/v1/token`,
+    url: API_URL + '/jwt-auth/v1/token',
     options: {
       method: 'POST',
       headers: {
@@ -19,7 +17,7 @@ export function TOKEN_POST(body) {
 
 export function TOKEN_VALIDATE_POST(token) {
   return {
-    url: `${API_URL}/jwt-auth/v1/token/validate`,
+    url: API_URL + '/jwt-auth/v1/token/validate',
     options: {
       method: 'POST',
       headers: {
@@ -31,7 +29,7 @@ export function TOKEN_VALIDATE_POST(token) {
 
 export function USER_GET(token) {
   return {
-    url: `${API_URL}/api/user`,
+    url: API_URL + '/api/user',
     options: {
       method: 'GET',
       headers: {
@@ -43,7 +41,7 @@ export function USER_GET(token) {
 
 export function USER_POST(body) {
   return {
-    url: `${API_URL}/api/user`,
+    url: API_URL + '/api/user',
     options: {
       method: 'POST',
       headers: {
@@ -56,7 +54,7 @@ export function USER_POST(body) {
 
 export function PHOTO_POST(formData, token) {
   return {
-    url: `${API_URL}/api/photo`,
+    url: API_URL + '/api/photo',
     options: {
       method: 'POST',
       headers: {
@@ -69,7 +67,7 @@ export function PHOTO_POST(formData, token) {
 
 export function PHOTOS_GET({ page, total, user }) {
   return {
-    url: `${API_URL}/photo?_page=${page}&_total=${total}&_user=${user}`,
+    url: `${API_URL}/api/photo/?_page=${page}&_total=${total}&_user=${user}`,
     options: {
       method: 'GET',
       cache: 'no-store',
@@ -79,7 +77,7 @@ export function PHOTOS_GET({ page, total, user }) {
 
 export function PHOTO_GET(id) {
   return {
-    url: `${API_URL}/photo/${id}`,
+    url: `${API_URL}/api/photo/${id}`,
     options: {
       method: 'GET',
       cache: 'no-store',
@@ -89,7 +87,7 @@ export function PHOTO_GET(id) {
 
 export function COMMENT_POST(id, body) {
   return {
-    url: `${API_URL}/comment/${id}`,
+    url: `${API_URL}/api/comment/${id}`,
     options: {
       method: 'POST',
       headers: {
@@ -103,7 +101,7 @@ export function COMMENT_POST(id, body) {
 
 export function PHOTO_DELETE(id) {
   return {
-    url: `${API_URL}/photo/${id}`,
+    url: `${API_URL}/api/photo/${id}`,
     options: {
       method: 'DELETE',
       headers: {
@@ -115,7 +113,7 @@ export function PHOTO_DELETE(id) {
 
 export function PASSWORD_LOST(body) {
   return {
-    url: `${API_URL}/password/lost`,
+    url: API_URL + '/api/password/lost',
     options: {
       method: 'POST',
       headers: {
@@ -128,7 +126,7 @@ export function PASSWORD_LOST(body) {
 
 export function PASSWORD_RESET(body) {
   return {
-    url: `${API_URL}/password/reset`,
+    url: API_URL + '/api/password/reset',
     options: {
       method: 'POST',
       headers: {
@@ -141,7 +139,7 @@ export function PASSWORD_RESET(body) {
 
 export function STATS_GET() {
   return {
-    url: `${API_URL}/stats`,
+    url: API_URL + '/api/stats',
     options: {
       method: 'GET',
       headers: {
