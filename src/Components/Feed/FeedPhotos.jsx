@@ -14,32 +14,29 @@ const FeedPhotos = ({ page, user, setModalPhoto, setInfinite }) => {
       const total = 6;
       const { url, options } = PHOTOS_GET({ page, total, user });
       try {
-        const { response, json } = await request(url, options);
-        console.log('Response:', response);
-        console.log('REQUEST JSON:', json);
-        if (response && response.ok) {
-          if (json && Array.isArray(json)) {
-            if (json.length < total) {
-              setInfinite(false);
-            }
-          } else {
-            console.error('Resposta não é um array ou é null:', json);
-            setInfinite(false);
-          }
-        } else {
-          console.error('Erro na resposta do servidor:', response);
+        const response = await fetch(url, options);
+        const json = await response.json();
+        if (!response.ok) {
+          throw new Error('Failed to fetch data'); // Melhorar a mensagem de erro com base na resposta do servidor
         }
+        if (json.length < total) {
+          setInfinite(false);
+        }
+        console.log('Response:', response); // Considere remover ou comentar na produção
+        console.log('REQUEST JSON:', json); // Considere remover ou comentar na produção
       } catch (error) {
         console.error('Erro ao buscar fotos:', error);
-        setInfinite(false); // Desativar infinite scroll em caso de erro
+        setInfinite(false);
+        setError(error); // Configura o estado de erro para mostrar a mensagem no componente de erro
       }
     }
+
     fetchPhotos();
-  }, [request, user, page, setInfinite]);
+  }, [page, user, request, setInfinite, setError]);
 
   if (error) return <Error error={error} />;
   if (loading) return <Loading />;
-  if (data && Array.isArray(data) && data.length > 0)
+  if (data && Array.isArray(data) && data.length > 0) {
     return (
       <ul className={`${styles.feed} animeLeft`}>
         {data.map((photo) => (
@@ -51,7 +48,9 @@ const FeedPhotos = ({ page, user, setModalPhoto, setInfinite }) => {
         ))}
       </ul>
     );
-  else return null; // Retorna null caso não haja dados ou data não seja um array
+  } else {
+    return null; // Retorna null se não houver dados ou se data não for um array
+  }
 };
 
 export default FeedPhotos;
