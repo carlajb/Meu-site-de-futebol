@@ -1,0 +1,2 @@
+[build]
+  functions = "netlify/functions" # Caminho para o diretório de funções
