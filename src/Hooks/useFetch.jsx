@@ -11,10 +11,20 @@ const useFetch = () => {
     try {
       setError(null);
       setLoading(true);
+      setData(null); // Limpa o estado de dados ao iniciar uma nova requisição
       console.log('Fazendo requisição para:', url);
       console.log('Opções da requisição:', options);
+
       response = await fetch(url, options);
-      json = await response.json();
+
+      // Verifica o tipo de conteúdo da resposta
+      const contentType = response.headers.get('Content-Type');
+      if (contentType && contentType.includes('application/json')) {
+        json = await response.json();
+      } else {
+        throw new Error('Resposta não está em formato JSON');
+      }
+
       if (!response.ok) throw new Error(json.message || 'Erro na requisição');
     } catch (err) {
       json = null;

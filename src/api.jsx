@@ -1,8 +1,4 @@
-// Utilizando a variável de ambiente para definir o API_URL
-export const API_URL =
-  import.meta.env.VITE_API_URL || 'http://localhost:10010/json';
-
-console.log('API_URL:', API_URL);
+export const API_URL = import.meta.env.VITE_API_URL;
 
 export function TOKEN_POST(body) {
   return {
@@ -150,3 +146,4 @@ export function STATS_GET() {
     },
   };
 }
+console.log('VARIAVEL DE AMBIENTE', import.meta.env.VITE_API_URL);

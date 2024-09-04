@@ -1,0 +1,35 @@
+# # Início da configuração do Node.js
+
+# Redireciona todo o tráfego para o servidor Node.js
+# RewriteEngine On
+# RewriteCond %{REQUEST_FILENAME} !-f
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteRule ^(.*)$ http://localhost:3000/$1 [P,L]
+
+# # Fim da configuração do Node.js
+
+# # Início da configuração padrão do WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js)$">
+        Header set Content-Type "application/javascript"
+    </FilesMatch>
+</IfModule>
+
+# Fim da configuração padrão do WordPress
+
+
+
+
